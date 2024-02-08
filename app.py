@@ -87,7 +87,7 @@ def add_member():
 
         return redirect(url_for('index'))
 
-@app.route("/delete_member/<int:id>", methods=["DELETE"])
+@app.route("/delete_member/<int:id>", methods=["GET", "POST"])
 def delete_member(id):
     clodmember = ClodMember.query.get(id)
     db.session.delete(clodmember)
