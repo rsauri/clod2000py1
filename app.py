@@ -90,8 +90,8 @@ def add_member():
 @app.route('/delete_member', methods=['GET'])
 def delete_member(id):
     clodmember = ClodMember.query.where(ClodMember.id == id).first()
-    db.session.delete(clodmember)
-    db.session.commit()
+    #db.session.delete(clodmember)
+    #db.session.commit()
 
     return redirect(url_for('index'))
 
