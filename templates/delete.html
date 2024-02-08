@@ -11,7 +11,9 @@
 {% endblock %}
 {% block content %}
   <h1>Group Member</h1>
-  <div class="row">
+  <form method="POST" action="{{ url_for('delete_member', id=clodmember.id) }}">
+    
+    <div class="row">
       <div class="col-md-2 fw-bold">Id:</div>
       <div class="col">{{ clodmember.id }}</div>
   </div>
@@ -19,11 +21,14 @@
       <div class="col-md-2 fw-bold">Name:</div>
       <div class="col">{{ clodmember.name }}</div>              
   </div>
- 
+ <br/>
   <p>
     Are you sure you want to delete group member {{ clodmember.name }}?
   </p>
-  <a href="{{ url_for('delete_member', id=clodmember.id) }}" class="btn btn-sm btn-primary">Yes</a>
-  <a href="{{ url_for('index') }}" class="btn btn-sm btn-primary">No</a>
+  <button type="submit" class="btn btn-primary">Yes</button>
+  <button type="cancel" class="btn btn-primary">No</button>
+</form>
+
+  
 
 {% endblock %}
