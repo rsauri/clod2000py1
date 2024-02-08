@@ -90,18 +90,11 @@ def add_member():
 @app.route('/delete_member', methods=['POST'])
 @csrf.exempt
 def delete_member(id):
-    try:
-        #test
-    except (KeyError):
-        # Redisplay the question voting form.
-        return render_template('delete.html', {
-            'error_message': "You must include an Id Number",
-        })
-    else:
-        ClodMember.query.filter_by(id=id).delete()
-        db.session.commit()
+    clodmember = ClodMember.query.where(ClodMember.id == id).first()
+    clodmember.delete()
+    db.session.commit()
 
-        return redirect(url_for('index'))
+    return redirect(url_for('index'))
 
 @app.route('/add', methods=['POST'])
 @csrf.exempt
