@@ -52,6 +52,11 @@ def details(id):
     reviews = Review.query.where(Review.restaurant == id)
     return render_template('details.html', restaurant=restaurant, reviews=reviews)
 
+@app.route('/<int:id>', methods=['GET'])
+def delete(id):
+    clodmember = ClodMember.query.where(ClodMember.id == id).first()
+    return render_template('delete.html', clodmember=clodmember)
+
 @app.route('/create', methods=['GET'])
 def create_restaurant():
     print('Request for add restaurant page received')
@@ -81,6 +86,8 @@ def add_member():
         db.session.commit()
 
         return redirect(url_for('index'))
+
+
 
 @app.route('/add', methods=['POST'])
 @csrf.exempt
