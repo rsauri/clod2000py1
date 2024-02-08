@@ -91,7 +91,7 @@ def add_member():
 @csrf.exempt
 def delete_member(id):
     clodmember = ClodMember.query.where(ClodMember.id == id).first()
-    clodmember.delete()
+    db.session.delete(clodmember)
     db.session.commit()
 
     return redirect(url_for('index'))
