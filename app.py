@@ -87,13 +87,13 @@ def add_member():
 
         return redirect(url_for('index'))
 
-@app.route("/delete/<int:id>", methods=["DELETE"])
+@app.route("/delete_member/<int:id>", methods=["DELETE"])
 def delete_member(id):
     clodmember = ClodMember.query.get(id)
     db.session.delete(clodmember)
     db.session.commit()
 
-    return redirect(url_for('index'))
+    return render_template('index.html',clodmembers=ClodMember.query.all())
 
 @app.route('/add', methods=['POST'])
 @csrf.exempt
