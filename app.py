@@ -34,17 +34,17 @@ migrate = Migrate(app, db)
 # The import must be done after db initialization due to circular import issue
 from models import Restaurant, Review, ClodMember
 
+@app.route('/', methods=['GET'])
+def members():
+    print('Request for members page received')
+    clodmembers = ClodMember.query.all()
+    return render_template('members.html', clodmembers=clodmembers)
+
 #@app.route('/', methods=['GET'])
 #def index():
 #    print('Request for index page received')
-#    clodmembers = ClodMember.query.all()
-#    return render_template('members.html', clodmembers=clodmembers)
-
-@app.route('/', methods=['GET'])
-def index():
-    print('Request for index page received')
-    restaurants = Restaurant.query.all()
-    return render_template('index.html', restaurants=restaurants)
+#    restaurants = Restaurant.query.all()
+#    return render_template('index.html', restaurants=restaurants)
 
 @app.route('/<int:id>', methods=['GET'])
 def details(id):
