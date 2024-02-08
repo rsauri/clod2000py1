@@ -74,13 +74,13 @@ def add_member():
             'error_message': "You must include an Id Number, and name",
         })
     else:
-        restaurant = ClodMember()
-        restaurant.name = name
-        restaurant.id = id
-        db.session.add(restaurant)
+        clodmember = ClodMember()
+        clodmember.name = name
+        clodmember.id = id
+        db.session.add(clodmember)
         db.session.commit()
 
-        return redirect(url_for('details', id=restaurant.id))
+        return redirect(url_for('index'))
 
 @app.route('/add', methods=['POST'])
 @csrf.exempt
