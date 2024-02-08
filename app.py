@@ -35,16 +35,16 @@ migrate = Migrate(app, db)
 from models import Restaurant, Review, ClodMember
 
 @app.route('/', methods=['GET'])
-def members():
-    print('Request for members page received')
+def index():
+    print('Request for index page received')
     clodmembers = ClodMember.query.all()
     return render_template('members.html', clodmembers=clodmembers)
 
-@app.route('/index', methods=['GET'])
-def index():
-    print('Request for index page received')
-    restaurants = Restaurant.query.all()
-    return render_template('index.html', restaurants=restaurants)
+#@app.route('/', methods=['GET'])
+#def index():
+#    print('Request for index page received')
+#    restaurants = Restaurant.query.all()
+#    return render_template('index.html', restaurants=restaurants)
 
 @app.route('/<int:id>', methods=['GET'])
 def details(id):
