@@ -43,7 +43,7 @@ from models import Restaurant, Review, ClodMember
 @app.route('/', methods=['GET'])
 def index():
     print('Request for index page received')
-    restaurants = Restaurant.query.all()
+    restaurants = ClodMember.query.all()
     return render_template('index.html', restaurants=restaurants)
 
 @app.route('/<int:id>', methods=['GET'])
