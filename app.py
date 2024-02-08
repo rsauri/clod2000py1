@@ -46,11 +46,11 @@ def index():
     restaurants = ClodMember.query.all()
     return render_template('index.html', restaurants=restaurants)
 
-@app.route('/<int:id>', methods=['GET'])
-def details(id):
-    restaurant = Restaurant.query.where(Restaurant.id == id).first()
-    reviews = Review.query.where(Review.restaurant == id)
-    return render_template('details.html', restaurant=restaurant, reviews=reviews)
+#@app.route('/<int:id>', methods=['GET'])
+#def details(id):
+#    restaurant = Restaurant.query.where(Restaurant.id == id).first()
+#    reviews = Review.query.where(Review.restaurant == id)
+#    return render_template('details.html', restaurant=restaurant, reviews=reviews)
 
 @app.route('/<int:id>', methods=['GET'])
 def delete(id):

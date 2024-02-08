@@ -57,7 +57,7 @@
                       <tr>
                           <td>{{ restaurant.id }}</td>
                           <td>{{ restaurant.name }}</td>
-                          <td class="text-end"><a href="{{ url_for('details', id=restaurant.id) }}" class="btn btn-sm btn-primary">Details</a></td>
+                          <td class="text-end"><a href="{{ url_for('delete', id=restaurant.id) }}" class="btn btn-sm btn-primary">Details</a></td>
                       </tr>
                   {% endfor %}
               </tbody>
