@@ -43,8 +43,8 @@ from models import Restaurant, Review, ClodMember
 @app.route('/', methods=['GET'])
 def index():
     print('Request for index page received')
-    restaurants = ClodMember.query.all()
-    return render_template('index.html', restaurants=restaurants)
+    clodmembers = ClodMember.query.all()
+    return render_template('index.html', clodmembers=clodmembers)
 
 #@app.route('/<int:id>', methods=['GET'])
 #def details(id):
@@ -87,7 +87,21 @@ def add_member():
 
         return redirect(url_for('index'))
 
+@app.route('/delete_member', methods=['POST'])
+@csrf.exempt
+def delete_member():
+    try:
+        id = request.values.get('id')
+    except (KeyError):
+        # Redisplay the question voting form.
+        return render_template('delete.html', {
+            'error_message': "You must include an Id Number",
+        })
+    else:
+        ClodMember.query.filter_by(id=id).delete()
+        db.session.commit()
 
+        return redirect(url_for('index'))
 
 @app.route('/add', methods=['POST'])
 @csrf.exempt

@@ -49,15 +49,15 @@
                   <tr>
                       <th>Id</th>
                       <th>Name</th>
-                      <th class="text-end">Details</th>
+                      <th class="text-end">Remove</th>
                   </tr>
               </thead>
               <tbody>
-                  {% for restaurant in restaurants %}
+                  {% for clodmember in clodmembers %}
                       <tr>
-                          <td>{{ restaurant.id }}</td>
-                          <td>{{ restaurant.name }}</td>
-                          <td class="text-end"><a href="{{ url_for('delete', id=restaurant.id) }}" class="btn btn-sm btn-primary">Details</a></td>
+                          <td>{{ clodmember.id }}</td>
+                          <td>{{ clodmember.name }}</td>
+                          <td class="text-end"><a href="{{ url_for('delete', id=clodmember.id) }}" class="btn btn-sm btn-primary">Remove</a></td>
                       </tr>
                   {% endfor %}
               </tbody>
