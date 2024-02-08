@@ -57,6 +57,31 @@ def create_restaurant():
     print('Request for add restaurant page received')
     return render_template('create_restaurant.html')
 
+@app.route('/create_member', methods=['GET'])
+def create_member():
+    print('Request for add member page received')
+    return render_template('create_member.html')
+
+@app.route('/add_member', methods=['POST'])
+@csrf.exempt
+def add_member():
+    try:
+        id = request.values.get('id')
+        name = request.values.get('name')
+    except (KeyError):
+        # Redisplay the question voting form.
+        return render_template('add_member.html', {
+            'error_message': "You must include an Id Number, and name",
+        })
+    else:
+        restaurant = ClodMember()
+        restaurant.name = name
+        restaurant.id = id
+        db.session.add(restaurant)
+        db.session.commit()
+
+        return redirect(url_for('details', id=restaurant.id))
+
 @app.route('/add', methods=['POST'])
 @csrf.exempt
 def add_restaurant():
