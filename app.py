@@ -91,7 +91,7 @@ def add_member():
 @csrf.exempt
 def delete_member(id):
     try:
-        id = id
+        print("here")
     except (KeyError):
         # Redisplay the question voting form.
         return render_template('delete.html', {
