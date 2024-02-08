@@ -4,6 +4,14 @@ from sqlalchemy.orm import validates
 from app import db
 
 
+class ClodMember(db.Model):
+    __tablename__ = 'clodmember'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250))
+
+    def __str__(self):
+        return self.name
+
 class Restaurant(db.Model):
     __tablename__ = 'restaurant'
     id = Column(Integer, primary_key=True)
