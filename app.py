@@ -89,9 +89,9 @@ def add_member():
 
 @app.route('/delete_member', methods=['POST'])
 @csrf.exempt
-def delete_member():
+def delete_member(id):
     try:
-        id = request.values.get('id')
+        #test
     except (KeyError):
         # Redisplay the question voting form.
         return render_template('delete.html', {

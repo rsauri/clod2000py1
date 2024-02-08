@@ -23,7 +23,7 @@
   <p>
     Are you sure you want to delete group member {{ clodmember.name }}?
   </p>
-  <form method="POST" action="{{ url_for('delete_member') }}">
+  <form method="POST" action="{{ url_for('delete_member', id=clodmember.id) }}">
     <button type="submit" class="btn btn-primary">Yes</button>
     <button type="cancel" class="btn btn-primary">No</button>
 </form>
